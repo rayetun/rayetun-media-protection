@@ -1,40 +1,47 @@
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RayEtun Media Protection">
   <defs>
     <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#065f46"/><stop offset="1" stop-color="#022c22"/>
+      <stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#042f26"/>
     </linearGradient>
-    <radialGradient id="tileGlow" cx="0.5" cy="0.30" r="0.72">
-      <stop offset="0" stop-color="#10b981" stop-opacity="0.38"/><stop offset="1" stop-color="#10b981" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="drop" x1="0.34" y1="0.04" x2="0.66" y2="1">
-      <stop offset="0" stop-color="#6ee7b7"/><stop offset="0.45" stop-color="#10b981"/><stop offset="1" stop-color="#047857"/>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#059669"/>
     </linearGradient>
-    <radialGradient id="spec" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    <radialGradient id="discHi" cx="0.4" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <filter id="ds" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#012019" flood-opacity="0.45"/>
+    <filter id="sh" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#010f0b" flood-opacity="0.45"/>
     </filter>
-    <clipPath id="tileClip"><rect x="8" y="8" width="240" height="240" rx="58"/></clipPath>
-    <mask id="keyMask">
-      <rect x="0" y="0" width="256" height="256" fill="#000"/>
-      <path d="M128 62 C150 112 186 142 186 174 A58 58 0 1 1 70 174 C70 142 106 112 128 62 Z" fill="#fff"/>
-      <circle cx="128" cy="170" r="19" fill="#000"/>
-      <path d="M120 184 L136 184 L143 210 L113 210 Z" fill="#000"/>
-    </mask>
   </defs>
 
   <rect x="8" y="8" width="240" height="240" rx="58" fill="url(#tile)"/>
-  <g clip-path="url(#tileClip)">
-    <rect x="8" y="8" width="240" height="240" fill="url(#tileGlow)"/>
-    <g opacity="0.06" stroke="#ffffff" stroke-width="7" stroke-linecap="round">
-      <line x1="-10" y1="150" x2="112" y2="28"/>
-      <line x1="146" y1="272" x2="292" y2="126"/>
+  <g filter="url(#sh)">
+    <circle cx="128" cy="128" r="84" fill="none" stroke="#34d399" stroke-width="6"/>
+    <g stroke="#0f9d6f" stroke-width="7" stroke-linecap="round">
+      <line x1="198" y1="128" x2="207" y2="128"/>
+      <line x1="194.6" y1="149.6" x2="203.1" y2="152.4"/>
+      <line x1="184.6" y1="169.1" x2="191.9" y2="174.4"/>
+      <line x1="169.1" y1="184.6" x2="174.4" y2="191.9"/>
+      <line x1="149.6" y1="194.6" x2="152.4" y2="203.1"/>
+      <line x1="128" y1="198" x2="128" y2="207"/>
+      <line x1="106.4" y1="194.6" x2="103.6" y2="203.1"/>
+      <line x1="86.9" y1="184.6" x2="81.6" y2="191.9"/>
+      <line x1="71.4" y1="169.1" x2="64.1" y2="174.4"/>
+      <line x1="61.4" y1="149.6" x2="52.9" y2="152.4"/>
+      <line x1="58" y1="128" x2="49" y2="128"/>
+      <line x1="61.4" y1="106.4" x2="52.9" y2="103.6"/>
+      <line x1="71.4" y1="86.9" x2="64.1" y2="81.6"/>
+      <line x1="86.9" y1="71.4" x2="81.6" y2="64.1"/>
+      <line x1="106.4" y1="61.4" x2="103.6" y2="52.9"/>
+      <line x1="128" y1="58" x2="128" y2="49"/>
+      <line x1="149.6" y1="61.4" x2="152.4" y2="52.9"/>
+      <line x1="169.1" y1="71.4" x2="174.4" y2="64.1"/>
+      <line x1="184.6" y1="86.9" x2="191.9" y2="81.6"/>
+      <line x1="194.6" y1="106.4" x2="203.1" y2="103.6"/>
     </g>
+    <circle cx="128" cy="128" r="58" fill="url(#mark)"/>
+    <circle cx="128" cy="128" r="58" fill="url(#discHi)"/>
+    <circle cx="128" cy="120" r="16" fill="#02241b"/>
+    <path d="M119 132 L137 132 L143 160 L113 160 Z" fill="#02241b"/>
   </g>
-
-  <g filter="url(#ds)">
-    <path d="M128 62 C150 112 186 142 186 174 A58 58 0 1 1 70 174 C70 142 106 112 128 62 Z" fill="url(#drop)" mask="url(#keyMask)"/>
-  </g>
-  <ellipse cx="106" cy="126" rx="15" ry="30" transform="rotate(-20 106 126)" fill="url(#spec)" mask="url(#keyMask)"/>
 </svg>
