@@ -1,0 +1,75 @@
+/**
+ * MarkGuard design tokens — emerald primary on slate neutrals.
+ * Light by default; dark via prefers-color-scheme and an explicit
+ * [data-mg-theme] override the Settings screen can set per user.
+ */
+
+:root {
+	--mg-primary: #059669;
+	--mg-primary-hover: #10b981;
+	--mg-primary-fg: #ffffff;
+	--mg-primary-soft: rgba( 5, 150, 105, 0.1 );
+
+	--mg-warning: #f59e0b;
+	--mg-danger: #ef4444;
+	--mg-info: #0ea5e9;
+	--mg-success: #059669;
+
+	/* Chart series. This emerald/amber pair is validated colorblind-safe
+	   against both the light and dark chart surfaces (dataviz palette check);
+	   the two series are also distinguished by solid vs dashed lines and a
+	   legend, so identity never rests on colour alone. Same values in both
+	   themes because both pass the validator. */
+	--mg-chart-served: #059669;
+	--mg-chart-blocked: #d97706;
+
+	--mg-bg: #f8fafc;
+	--mg-surface: #ffffff;
+	--mg-surface-2: #f1f5f9;
+	--mg-border: #e2e8f0;
+	--mg-text: #0f172a;
+	--mg-text-muted: #64748b;
+
+	--mg-radius-card: 12px;
+	--mg-radius-input: 8px;
+	--mg-radius-chip: 6px;
+
+	--mg-shadow-card: 0 1px 2px rgba( 15, 23, 42, 0.06 );
+	--mg-shadow-pop: 0 4px 16px rgba( 15, 23, 42, 0.12 );
+
+	--mg-sidebar-w: 240px;
+	--mg-sidebar-w-collapsed: 64px;
+
+	--mg-space-1: 4px;
+	--mg-space-2: 8px;
+	--mg-space-3: 12px;
+	--mg-space-4: 16px;
+	--mg-space-5: 24px;
+	--mg-space-6: 32px;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	:root:not( [data-mg-theme='light'] ) {
+		--mg-bg: #0f172a;
+		--mg-surface: #1e293b;
+		--mg-surface-2: #172033;
+		--mg-border: #334155;
+		--mg-text: #f8fafc;
+		--mg-text-muted: #94a3b8;
+		--mg-primary-soft: rgba( 16, 185, 129, 0.14 );
+		--mg-shadow-card: 0 1px 2px rgba( 0, 0, 0, 0.3 );
+		--mg-shadow-pop: 0 4px 16px rgba( 0, 0, 0, 0.5 );
+	}
+}
+
+:root[data-mg-theme='dark'] {
+	--mg-bg: #0f172a;
+	--mg-surface: #1e293b;
+	--mg-surface-2: #172033;
+	--mg-border: #334155;
+	--mg-text: #f8fafc;
+	--mg-text-muted: #94a3b8;
+	--mg-primary-soft: rgba( 16, 185, 129, 0.14 );
+	--mg-shadow-card: 0 1px 2px rgba( 0, 0, 0, 0.3 );
+	--mg-shadow-pop: 0 4px 16px rgba( 0, 0, 0, 0.5 );
+}

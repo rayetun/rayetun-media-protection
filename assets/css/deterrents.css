@@ -1,0 +1,48 @@
+/**
+ * MarkGuard front-end deterrents. Loaded only when the deterrent layer is on
+ * (body gets .markguard-deterrents-on). Makes images awkward to drag or select,
+ * and styles the transient "protected" notice.
+ */
+
+.markguard-deterrents-on img {
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.markguard-deterrent-toast {
+	position: fixed;
+	left: 50%;
+	bottom: 24px;
+	transform: translateX(-50%) translateY(10px);
+	max-width: 90vw;
+	padding: 10px 16px;
+	background: rgba(15, 23, 42, 0.92);
+	color: #fff;
+	font-size: 14px;
+	line-height: 1.4;
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+	opacity: 0;
+	pointer-events: none;
+	z-index: 99999;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.markguard-deterrent-toast.is-visible {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.markguard-deterrent-toast {
+		transform: translateX(-50%);
+		transition: opacity 0.2s ease;
+	}
+
+	.markguard-deterrent-toast.is-visible {
+		transform: translateX(-50%);
+	}
+}

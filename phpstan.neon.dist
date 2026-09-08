@@ -1,0 +1,18 @@
+parameters:
+    level: 8
+    paths:
+        - markguard.php
+        - uninstall.php
+        - src
+    excludePaths:
+        - vendor/*
+        - build/*
+        - node_modules/*
+    bootstrapFiles:
+        - vendor/autoload.php
+    ignoreErrors:
+        # WordPress core functions and constants that PHPStan can't always resolve
+        - '#Constant WP_UNINSTALL_PLUGIN not found#'
+
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon

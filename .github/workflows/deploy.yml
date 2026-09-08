@@ -1,0 +1,43 @@
+name: Deploy to WordPress.org
+
+# Publishes to the WordPress.org SVN repo when a GitHub Release is published.
+# Draft releases do NOT trigger this — only publishing does.
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: composer
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install production PHP dependencies
+        # Runs the composer post-install hook that trims unused TCPDF fonts.
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Build front-end and admin assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to WordPress.org
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: rayetun-media-protection
+          ASSETS_DIR: .wordpress-org

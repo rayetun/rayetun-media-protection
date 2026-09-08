@@ -1,0 +1,1787 @@
+# Copyright (C) 2026 Md Rayhan Uddin
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: RayEtun Media Protection — Watermarks, Protected Files & Access Control 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rayetun-media-protection\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-08T18:21:04+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: rayetun-media-protection\n"
+
+#. Plugin Name of the plugin
+#: rayetun-media-protection.php
+msgid "RayEtun Media Protection — Watermarks, Protected Files & Access Control"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: rayetun-media-protection.php
+msgid "https://rayetun.com"
+msgstr ""
+
+#. Description of the plugin
+#: rayetun-media-protection.php
+msgid "Watermark images and PDFs, protect downloadable files, and control who can access them. Built on standard WordPress APIs — REST, Interactivity API, and @wordpress/components."
+msgstr ""
+
+#. Author of the plugin
+#: rayetun-media-protection.php
+msgid "Ray Etun"
+msgstr ""
+
+#. Author URI of the plugin
+#: rayetun-media-protection.php
+msgid "https://rayetun.com"
+msgstr ""
+
+#: src/Admin/Menu.php:29
+#: src/Admin/Menu.php:30
+#: src/Media/MediaActions.php:70
+#: src/Storage/Handler.php:147
+#: build/index.js:11
+msgid "RayEtun Media Protection"
+msgstr ""
+
+#: src/Admin/Menu.php:52
+msgid "RayEtun Media Protection requires JavaScript to manage its settings."
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:148
+msgid "(deleted file)"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:185
+#: src/Admin/Rest/AnalyticsController.php:226
+msgid "Other"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:220
+msgid "Role not allowed"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:221
+msgid "Not signed in"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:222
+msgid "Hotlink blocked"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:223
+msgid "Click limit reached"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:224
+msgid "Link expired"
+msgstr ""
+
+#: src/Admin/Rest/AnalyticsController.php:225
+msgid "Token expired"
+msgstr ""
+
+#: src/Admin/Rest/BlocksController.php:130
+msgid "Not a valid attachment."
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:81
+msgid "Image engine"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:81
+msgid "none available"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:82
+msgid "PDF engine"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:82
+msgid "not loaded"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:83
+msgid "Protected storage"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:83
+msgid "writable & guarded"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:83
+msgid "not writable"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:84
+msgid "Cleanup schedule"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:84
+msgid "scheduled"
+msgstr ""
+
+#: src/Admin/Rest/DashboardController.php:84
+msgid "not scheduled"
+msgstr ""
+
+#: src/Admin/Rest/FilesController.php:121
+msgid "That attachment file could not be found."
+msgstr ""
+
+#: src/Admin/Rest/FilesController.php:131
+msgid "Could not move the file into protected storage."
+msgstr ""
+
+#: src/Admin/Rest/FilesController.php:151
+msgid "File stored but could not be recorded."
+msgstr ""
+
+#: src/Admin/Rest/FilesController.php:161
+#: src/Admin/Rest/FilesController.php:193
+msgid "File not found."
+msgstr ""
+
+#: src/Admin/Rest/FilesController.php:206
+msgid "Custom"
+msgstr ""
+
+#: src/Admin/Rest/FilesController.php:208
+msgid "Public link"
+msgstr ""
+
+#: src/Admin/Rest/GalleryController.php:111
+msgid "Invalid config."
+msgstr ""
+
+#: src/Admin/Rest/PoliciesController.php:84
+#: build/index.js:10
+msgid "Could not save the policy."
+msgstr ""
+
+#: src/Admin/Rest/PoliciesController.php:92
+msgid "Policy not found."
+msgstr ""
+
+#: src/Admin/Rest/PoliciesController.php:116
+#: build/index.js:5
+msgid "Untitled policy"
+msgstr ""
+
+#: src/Admin/Rest/PresetsController.php:92
+#: build/index.js:7
+msgid "Could not save the preset."
+msgstr ""
+
+#: src/Admin/Rest/PresetsController.php:100
+msgid "Preset not found."
+msgstr ""
+
+#: src/Admin/Rest/PresetsController.php:121
+msgid "Preview could not be rendered on this server."
+msgstr ""
+
+#: src/Admin/Rest/PresetsController.php:128
+#: build/index.js:1
+msgid "Untitled preset"
+msgstr ""
+
+#: src/Admin/Rest/SettingsController.php:82
+msgid "Unknown feature."
+msgstr ""
+
+#: src/Admin/Rest/SettingsController.php:158
+msgid "Unknown settings group."
+msgstr ""
+
+#: src/Admin/Rest/SettingsController.php:193
+msgid "Invalid import file."
+msgstr ""
+
+#: src/Blocks/BlockRegistry.php:26
+#: build/blocks/protected-gallery/index.js:1
+msgid "Protected Gallery"
+msgstr ""
+
+#: src/Blocks/BlockRegistry.php:27
+msgid "Clean thumbnails, a watermarked lightbox preview, and an authorized clean-file download."
+msgstr ""
+
+#: src/Blocks/BlockRegistry.php:35
+#: build/blocks/protected-download/index.js:1
+msgid "Protected Download"
+msgstr ""
+
+#: src/Blocks/BlockRegistry.php:36
+msgid "A signed, access-controlled download button for a single file."
+msgstr ""
+
+#: src/Blocks/BlockRegistry.php:44
+#: build/blocks/protected-library/index.js:1
+msgid "Protected File Library"
+msgstr ""
+
+#: src/Blocks/BlockRegistry.php:45
+msgid "A grid of protected files with signed downloads and optional filtering."
+msgstr ""
+
+#: src/Blocks/DownloadConfig.php:26
+#: src/Blocks/DownloadConfig.php:53
+#: src/Blocks/LibraryConfig.php:29
+#: src/Blocks/LibraryConfig.php:66
+#: src/Blocks/ProtectedDownloadBlock.php:45
+#: src/Blocks/ProtectedLibraryBlock.php:95
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "Download"
+msgstr ""
+
+#: src/Blocks/DownloadConfig.php:27
+#: src/Blocks/DownloadConfig.php:54
+#: src/Blocks/LibraryConfig.php:30
+#: src/Blocks/LibraryConfig.php:67
+#: src/Blocks/ProtectedDownloadBlock.php:46
+#: src/Blocks/ProtectedLibraryBlock.php:96
+#: build/blocks/protected-library/index.js:1
+msgid "Log in to download"
+msgstr ""
+
+#: src/Blocks/LibraryConfig.php:34
+#: src/Blocks/LibraryConfig.php:71
+#: src/Blocks/ProtectedLibraryBlock.php:100
+#: src/Gallery/GalleryConfig.php:51
+#: src/Gallery/GalleryConfig.php:172
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "All"
+msgstr ""
+
+#: src/Blocks/ProtectedLibraryBlock.php:123
+msgid "Filter files"
+msgstr ""
+
+#: src/Deterrent/DeterrentLayer.php:64
+msgid "This content is protected."
+msgstr ""
+
+#: src/Frontend/CleanDownloadShortcode.php:45
+#: src/Gallery/GalleryConfig.php:46
+#: src/Gallery/GalleryConfig.php:167
+#: build/blocks/protected-gallery/index.js:1
+msgid "Download original"
+msgstr ""
+
+#: src/Frontend/CleanDownloadShortcode.php:46
+#: src/Gallery/GalleryConfig.php:47
+#: src/Gallery/GalleryConfig.php:168
+#: build/blocks/protected-gallery/index.js:1
+msgid "Log in to download the original file."
+msgstr ""
+
+#: src/Gallery/GalleryBlock.php:201
+msgid "Filter gallery"
+msgstr ""
+
+#: src/Gallery/GalleryBlock.php:259
+msgid "Image preview"
+msgstr ""
+
+#: src/Gallery/GalleryBlock.php:262
+#: build/index.js:1
+#: build/index.js:10
+msgid "Close"
+msgstr ""
+
+#: src/Gallery/GalleryConfig.php:89
+msgid "Grid"
+msgstr ""
+
+#: src/Media/MediaActions.php:53
+msgid "Unprotect"
+msgstr ""
+
+#: src/Media/MediaActions.php:59
+msgid "Protect with RayEtun Media Protection"
+msgstr ""
+
+#: src/Media/MediaActions.php:80
+msgid "Protected"
+msgstr ""
+
+#: src/Media/MediaActions.php:82
+msgid "—"
+msgstr ""
+
+#: src/Media/MediaActions.php:137
+msgid "You are not allowed to do that."
+msgstr ""
+
+#: src/Storage/Backends/LocalBackend.php:30
+msgid "Local filesystem"
+msgstr ""
+
+#: src/Storage/Handler.php:98
+msgid "This download link is invalid."
+msgstr ""
+
+#: src/Storage/Handler.php:103
+msgid "This download link has expired."
+msgstr ""
+
+#: src/Storage/Handler.php:107
+msgid "The requested file was not found."
+msgstr ""
+
+#: src/Storage/Handler.php:112
+msgid "You do not have access to this file."
+msgstr ""
+
+#: src/Storage/Handler.php:119
+msgid "The requested file is no longer available."
+msgstr ""
+
+#. translators: 1: required PHP version, 2: current PHP version
+#: src/Support/EnvironmentGuard.php:44
+#, php-format
+msgid "RayEtun Media Protection requires PHP %1$s or newer. Your server is running PHP %2$s."
+msgstr ""
+
+#. translators: 1: required WordPress version, 2: current WordPress version
+#: src/Support/EnvironmentGuard.php:54
+#, php-format
+msgid "RayEtun Media Protection requires WordPress %1$s or newer. Your site is running WordPress %2$s."
+msgstr ""
+
+#: src/Support/EnvironmentGuard.php:64
+msgid "RayEtun Media Protection could not activate:"
+msgstr ""
+
+#: src/Watermark/Engines/ImageEngine.php:43
+msgid "Image (JPEG, PNG, WebP)"
+msgstr ""
+
+#: src/Watermark/Engines/PdfEngine.php:40
+msgid "PDF documents"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Everyone"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+#: build/index.js:6
+msgid "Logged-in users"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/index.js:7
+msgid "File"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+msgid "Replace file"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+msgid "Choose file"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Who can download"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Show file info (type · size)"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+msgid "Button label"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Locked message"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+msgid "Log in to download this file."
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+msgid "Style"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Template"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Card (row)"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Tile (stacked)"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Accent color"
+msgstr ""
+
+#: build/blocks/protected-download/index.js:1
+msgid "Choose a file"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Default upload preset"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Layout"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Columns"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Gap (px)"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Corner radius (px)"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Accent color (buttons, filters)"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "Protection"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Watermark preset (lightbox preview)"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Create a watermark preset (Watermarks screen) so the large preview can be watermarked."
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Who can download the original"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Thumbnail overlay"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Overlay style"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Overlay opacity"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/index.js:5
+msgid "Overlay color"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Lightbox"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Show image title"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Show download button"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+#: build/index.js:5
+msgid "Download button label"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "Filters"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "Enable filter bar"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "“All” label"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Give each image one or more categories to build the filter bar. Type a category and press Enter (or comma); reuse suggestions to keep them consistent."
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+#: build/blocks/protected-library/index.js:1
+msgid "Categories"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Select images"
+msgstr ""
+
+#: build/blocks/protected-gallery/index.js:1
+msgid "Edit images"
+msgstr ""
+
+#: build/blocks/protected-library/index.js:1
+msgid "Give each file one or more categories. Press Enter or comma after each."
+msgstr ""
+
+#: build/blocks/protected-library/index.js:1
+msgid "Select files"
+msgstr ""
+
+#: build/blocks/protected-library/index.js:1
+msgid "Tip: hold Ctrl (⌘ on Mac) to pick several files at once."
+msgstr ""
+
+#: build/blocks/protected-library/index.js:1
+msgid "Edit files"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create a watermark preset"
+msgstr ""
+
+#: build/index.js:1
+msgid "Design a reusable text or image watermark."
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:7
+msgid "Protect a file"
+msgstr ""
+
+#: build/index.js:1
+msgid "Lock a download behind a signed, expiring link."
+msgstr ""
+
+#: build/index.js:1
+msgid "View analytics"
+msgstr ""
+
+#: build/index.js:1
+msgid "See downloads and blocked attempts."
+msgstr ""
+
+#: build/index.js:1
+msgid "Quick actions"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create your first watermark preset"
+msgstr ""
+
+#: build/index.js:1
+msgid "Protect your first file"
+msgstr ""
+
+#: build/index.js:1
+msgid "Turn on watermarking for your store downloads"
+msgstr ""
+
+#: build/index.js:1
+msgid "Get started with RayEtun Media Protection"
+msgstr ""
+
+#: build/index.js:1
+msgid "Dismiss"
+msgstr ""
+
+#: build/index.js:1
+msgid "(done)"
+msgstr ""
+
+#: build/index.js:1
+msgid "(to do)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Auto-watermark uploads"
+msgstr ""
+
+#: build/index.js:1
+msgid "Apply your default watermark preset to every new image and PDF added to the media library."
+msgstr ""
+
+#: build/index.js:1
+msgid "Auto-protect uploads"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move new uploads into protected storage so they are only reachable through signed links."
+msgstr ""
+
+#: build/index.js:1
+msgid "E-commerce watermarking"
+msgstr ""
+
+#: build/index.js:1
+msgid "Stamp each buyer’s downloads with their email and order for traceable delivery."
+msgstr ""
+
+#: build/index.js:1
+msgid "Deterrent layer"
+msgstr ""
+
+#: build/index.js:1
+msgid "Discourage casual copying with right-click, drag, and devtools deterrents. Not a substitute for the file-serving protection above."
+msgstr ""
+
+#: build/index.js:1
+msgid "Top left"
+msgstr ""
+
+#: build/index.js:1
+msgid "Top center"
+msgstr ""
+
+#: build/index.js:1
+msgid "Top right"
+msgstr ""
+
+#: build/index.js:1
+msgid "Center left"
+msgstr ""
+
+#: build/index.js:1
+msgid "Center"
+msgstr ""
+
+#: build/index.js:1
+msgid "Center right"
+msgstr ""
+
+#: build/index.js:1
+msgid "Bottom left"
+msgstr ""
+
+#: build/index.js:1
+msgid "Bottom center"
+msgstr ""
+
+#: build/index.js:1
+msgid "Bottom right"
+msgstr ""
+
+#: build/index.js:1
+msgid "Watermark position"
+msgstr ""
+
+#: build/index.js:1
+msgid "Email"
+msgstr ""
+
+#: build/index.js:1
+msgid "Order #"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:6
+msgid "Date"
+msgstr ""
+
+#: build/index.js:1
+msgid "User ID"
+msgstr ""
+
+#: build/index.js:1
+msgid "IP"
+msgstr ""
+
+#: build/index.js:1
+msgid "Site"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert:"
+msgstr ""
+
+#: build/index.js:1
+msgid "Rendered watermark preview"
+msgstr ""
+
+#: build/index.js:1
+msgid "Your watermark text"
+msgstr ""
+
+#: build/index.js:1
+msgid "Choose an overlay image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Render real preview"
+msgstr ""
+
+#: build/index.js:1
+msgid "Exact engine output"
+msgstr ""
+
+#: build/index.js:1
+msgid "Preview unavailable on this server."
+msgstr ""
+
+#: build/index.js:1
+msgid "Preview shown on a sample photo. Tokens use example values."
+msgstr ""
+
+#: build/index.js:1
+msgid "Edit watermark preset"
+msgstr ""
+
+#: build/index.js:1
+msgid "New watermark preset"
+msgstr ""
+
+#: build/index.js:1
+msgid "Preset name"
+msgstr ""
+
+#: build/index.js:1
+msgid "e.g. Buyer stamp"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:7
+msgid "Type"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:7
+msgid "Text"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:7
+msgid "Image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Watermark text"
+msgstr ""
+
+#: build/index.js:1
+msgid "Font size"
+msgstr ""
+
+#: build/index.js:1
+msgid "Color"
+msgstr ""
+
+#: build/index.js:1
+msgid "Choose overlay image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use this image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Replace overlay image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Size (% of file width)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Position"
+msgstr ""
+
+#: build/index.js:1
+msgid "Offset X"
+msgstr ""
+
+#: build/index.js:1
+msgid "Offset Y"
+msgstr ""
+
+#: build/index.js:1
+msgid "Opacity"
+msgstr ""
+
+#: build/index.js:1
+msgid "Rotation"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use as default for new uploads"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:5
+msgid "Cancel"
+msgstr ""
+
+#: build/index.js:1
+msgid "Save preset"
+msgstr ""
+
+#: build/index.js:1
+msgid "Image overlay"
+msgstr ""
+
+#: build/index.js:1
+msgid "(no text)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Never expires"
+msgstr ""
+
+#: build/index.js:1
+msgid "1 hour"
+msgstr ""
+
+#: build/index.js:1
+msgid "24 hours"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:6
+msgid "7 days"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:6
+msgid "30 days"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create download link"
+msgstr ""
+
+#: build/index.js:1
+msgid "Link lifetime"
+msgstr ""
+
+#: build/index.js:1
+msgid "Copied!"
+msgstr ""
+
+#: build/index.js:1
+msgid "Copy"
+msgstr ""
+
+#: build/index.js:1
+msgid "Open link in a new tab"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create another"
+msgstr ""
+
+#: build/index.js:1
+msgid "Create link"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:6
+msgid "Public link — anyone with the link"
+msgstr ""
+
+#: build/index.js:1
+msgid "Access policy"
+msgstr ""
+
+#: build/index.js:1
+msgid "Tip: create reusable policies under Access Policies to require login or limit downloads."
+msgstr ""
+
+#: build/index.js:1
+msgid "Apply"
+msgstr ""
+
+#: build/index.js:1
+msgid "Never"
+msgstr ""
+
+#. translators: %s: comma-separated list of role names
+#: build/index.js:2
+#, js-format
+msgid "users with role %s"
+msgstr ""
+
+#: build/index.js:2
+msgid "logged-in users"
+msgstr ""
+
+#: build/index.js:2
+msgid "anyone with the link"
+msgstr ""
+
+#. translators: %d: number of downloads
+#: build/index.js:3
+#, js-format
+msgid "up to %d download per link"
+msgid_plural "up to %d downloads per link"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: allowed hostname the file may be embedded on
+#: build/index.js:5
+#, js-format
+msgid "only embeddable on %s"
+msgstr ""
+
+#: build/index.js:5
+msgid "; "
+msgstr ""
+
+#: build/index.js:5
+msgid "Edit access policy"
+msgstr ""
+
+#: build/index.js:5
+msgid "New access policy"
+msgstr ""
+
+#: build/index.js:5
+msgid "Policy name"
+msgstr ""
+
+#: build/index.js:5
+msgid "e.g. Members only"
+msgstr ""
+
+#: build/index.js:5
+msgid "Require login"
+msgstr ""
+
+#: build/index.js:5
+msgid "Only logged-in users may download."
+msgstr ""
+
+#: build/index.js:5
+msgid "Allowed roles"
+msgstr ""
+
+#: build/index.js:5
+msgid "If none are checked, any logged-in user (or anyone, if login is not required) may download."
+msgstr ""
+
+#: build/index.js:5
+msgid "Max downloads per link (0 = unlimited)"
+msgstr ""
+
+#: build/index.js:5
+msgid "Hotlink host (optional)"
+msgstr ""
+
+#: build/index.js:5
+msgid "Only allow the file to be embedded from this domain. Leave blank to allow any."
+msgstr ""
+
+#: build/index.js:5
+msgid "This policy allows"
+msgstr ""
+
+#: build/index.js:5
+msgid "Save policy"
+msgstr ""
+
+#: build/index.js:5
+msgid "Lightbox: show image title"
+msgstr ""
+
+#: build/index.js:5
+msgid "Lightbox: show download button"
+msgstr ""
+
+#: build/index.js:5
+msgid "Enable filter bar by default"
+msgstr ""
+
+#: build/index.js:5
+msgid "“All” filter label"
+msgstr ""
+
+#: build/index.js:5
+#: build/index.js:7
+#: build/index.js:10
+#: build/index.js:11
+msgid "Saved."
+msgstr ""
+
+#: build/index.js:5
+#: build/index.js:10
+#: build/index.js:11
+msgid "Could not save."
+msgstr ""
+
+#: build/index.js:5
+msgid "Save gallery defaults"
+msgstr ""
+
+#: build/index.js:5
+msgid "Save download defaults"
+msgstr ""
+
+#: build/index.js:5
+msgid "Save library defaults"
+msgstr ""
+
+#. translators: 1: days, 2: served count, 3: blocked count
+#: build/index.js:6
+#, js-format
+msgid "Daily activity over %1$d days: %2$d downloads served and %3$d attempts blocked in total."
+msgstr ""
+
+#: build/index.js:6
+#: build/index.js:10
+msgid "Downloads served"
+msgstr ""
+
+#: build/index.js:6
+#: build/index.js:10
+msgid "Blocked attempts"
+msgstr ""
+
+#: build/index.js:6
+#: build/index.js:7
+#: build/index.js:10
+msgid "Served"
+msgstr ""
+
+#: build/index.js:6
+#: build/index.js:7
+#: build/index.js:10
+msgid "Blocked"
+msgstr ""
+
+#: build/index.js:6
+msgid "View data table"
+msgstr ""
+
+#: build/index.js:6
+msgid "90 days"
+msgstr ""
+
+#: build/index.js:6
+msgid "No activity yet"
+msgstr ""
+
+#: build/index.js:6
+msgid "Once your protected files are downloaded or blocked, the trends will appear here."
+msgstr ""
+
+#: build/index.js:6
+msgid "Admin theme"
+msgstr ""
+
+#: build/index.js:6
+msgid "Follow system"
+msgstr ""
+
+#: build/index.js:6
+msgid "Light"
+msgstr ""
+
+#: build/index.js:6
+msgid "Dark"
+msgstr ""
+
+#: build/index.js:6
+msgid "Keep download logs for (days)"
+msgstr ""
+
+#: build/index.js:6
+msgid "Save general settings"
+msgstr ""
+
+#: build/index.js:6
+msgid "Default policy for auto-protected uploads"
+msgstr ""
+
+#: build/index.js:6
+msgid "When “Auto-protect uploads” is on, new non-image files get this access policy."
+msgstr ""
+
+#: build/index.js:6
+msgid "Save upload settings"
+msgstr ""
+
+#: build/index.js:6
+msgid "Clean-copy downloads"
+msgstr ""
+
+#: build/index.js:6
+msgid "Show the watermarked image to everyone, but let authorized visitors download the clean, un-watermarked original. Works with auto-watermarking: when an image is watermarked on upload, its clean original is saved to protected storage. Applies to new uploads."
+msgstr ""
+
+#: build/index.js:6
+msgid "Offer clean-copy downloads"
+msgstr ""
+
+#: build/index.js:6
+msgid "Who can download the clean original"
+msgstr ""
+
+#: build/index.js:6
+msgid "The clean original is served through a signed, access-controlled link."
+msgstr ""
+
+#: build/index.js:6
+msgid "Place the download button in any post or page with this shortcode (use the media attachment ID):"
+msgstr ""
+
+#: build/index.js:6
+msgid "Save clean-copy settings"
+msgstr ""
+
+#: build/index.js:6
+msgid "Choose which roles can manage RayEtun Media Protection and view analytics. Administrators always have full access."
+msgstr ""
+
+#: build/index.js:6
+msgid "Can manage RayEtun Media Protection"
+msgstr ""
+
+#: build/index.js:6
+msgid "Can view analytics"
+msgstr ""
+
+#: build/index.js:6
+msgid "Save access control"
+msgstr ""
+
+#: build/index.js:6
+msgid "Signing key"
+msgstr ""
+
+#: build/index.js:6
+msgid "Every download link is signed with this key. Rotating it instantly invalidates all previously shared links — useful if a link leaked."
+msgstr ""
+
+#: build/index.js:6
+msgid "Rotate the signing key? Every existing download link will stop working immediately."
+msgstr ""
+
+#: build/index.js:6
+msgid "Signing key rotated. All old links are now invalid."
+msgstr ""
+
+#: build/index.js:6
+msgid "Rotate signing key"
+msgstr ""
+
+#: build/index.js:6
+msgid "Export"
+msgstr ""
+
+#: build/index.js:6
+msgid "Download your watermark presets, access policies, and settings as a JSON file."
+msgstr ""
+
+#: build/index.js:6
+msgid "Export settings"
+msgstr ""
+
+#: build/index.js:6
+msgid "Import"
+msgstr ""
+
+#: build/index.js:6
+msgid "Restore presets and policies from an exported file. Existing items are kept; imported ones are added."
+msgstr ""
+
+#. translators: 1: number of presets imported, 2: number of policies imported
+#: build/index.js:7
+#, js-format
+msgid "Imported %1$d presets and %2$d policies."
+msgstr ""
+
+#: build/index.js:7
+msgid "That file could not be imported."
+msgstr ""
+
+#: build/index.js:7
+msgid "Import settings"
+msgstr ""
+
+#: build/index.js:7
+msgid "RayEtun Media Protection stores everything in your own WordPress database and uploads folder. There is no telemetry, no account, and no external service."
+msgstr ""
+
+#: build/index.js:7
+msgid "What uninstalling removes"
+msgstr ""
+
+#: build/index.js:7
+msgid "RayEtun Media Protection’s database tables (protected files, access log, presets, policies)"
+msgstr ""
+
+#: build/index.js:7
+msgid "All RayEtun Media Protection options and capabilities"
+msgstr ""
+
+#: build/index.js:7
+msgid "The protected-uploads directory and its contents"
+msgstr ""
+
+#: build/index.js:7
+msgid "Your posts, pages, and original media are never touched."
+msgstr ""
+
+#: build/index.js:7
+msgid "Dashboard"
+msgstr ""
+
+#: build/index.js:7
+msgid "Overview of your protected media and document security."
+msgstr ""
+
+#: build/index.js:7
+msgid "Could not load dashboard data."
+msgstr ""
+
+#: build/index.js:7
+msgid "Protected files"
+msgstr ""
+
+#: build/index.js:7
+msgid "Downloads served (7 days)"
+msgstr ""
+
+#: build/index.js:7
+msgid "Blocked attempts (7 days)"
+msgstr ""
+
+#: build/index.js:7
+msgid "Watermark presets"
+msgstr ""
+
+#: build/index.js:7
+msgid "Modules"
+msgstr ""
+
+#: build/index.js:7
+msgid "Could not save that change."
+msgstr ""
+
+#: build/index.js:7
+msgid "Install WooCommerce, EDD, or Download Monitor to use this."
+msgstr ""
+
+#: build/index.js:7
+msgid "System health"
+msgstr ""
+
+#: build/index.js:7
+msgid " — OK"
+msgstr ""
+
+#: build/index.js:7
+msgid " — needs attention"
+msgstr ""
+
+#: build/index.js:7
+msgid "Watermarks"
+msgstr ""
+
+#: build/index.js:7
+msgid "Design reusable watermark presets, then apply them to uploads, files, and store downloads."
+msgstr ""
+
+#: build/index.js:7
+msgid "New preset"
+msgstr ""
+
+#: build/index.js:7
+msgid "No presets yet"
+msgstr ""
+
+#: build/index.js:7
+msgid "Create your first watermark preset to brand images and stamp PDFs."
+msgstr ""
+
+#: build/index.js:7
+msgid "Create a preset"
+msgstr ""
+
+#: build/index.js:7
+msgid "Upload default"
+msgstr ""
+
+#: build/index.js:7
+#: build/index.js:10
+msgid "Edit"
+msgstr ""
+
+#: build/index.js:7
+#: build/index.js:10
+msgid " (copy)"
+msgstr ""
+
+#: build/index.js:7
+#: build/index.js:10
+msgid "Duplicate"
+msgstr ""
+
+#: build/index.js:7
+msgid "Delete this preset?"
+msgstr ""
+
+#: build/index.js:7
+msgid "Preset deleted."
+msgstr ""
+
+#: build/index.js:7
+#: build/index.js:9
+#: build/index.js:10
+msgid "Delete"
+msgstr ""
+
+#: build/index.js:7
+msgid "Preset saved."
+msgstr ""
+
+#: build/index.js:7
+msgid "Protected Files"
+msgstr ""
+
+#: build/index.js:7
+msgid "Choose a file to protect"
+msgstr ""
+
+#: build/index.js:7
+msgid "Protect this file"
+msgstr ""
+
+#: build/index.js:7
+msgid "Files served only through signed links, with per-file access control."
+msgstr ""
+
+#: build/index.js:7
+msgid "Search files…"
+msgstr ""
+
+#: build/index.js:7
+msgid "Search files"
+msgstr ""
+
+#: build/index.js:7
+msgid "No protected files"
+msgstr ""
+
+#: build/index.js:7
+msgid "Protect a file to serve it only through signed, access-controlled links."
+msgstr ""
+
+#: build/index.js:7
+msgid "Size"
+msgstr ""
+
+#: build/index.js:7
+msgid "Policy"
+msgstr ""
+
+#: build/index.js:7
+msgid "Last access"
+msgstr ""
+
+#: build/index.js:7
+msgid "Actions"
+msgstr ""
+
+#: build/index.js:7
+msgid "Link"
+msgstr ""
+
+#. translators: %s: file name
+#: build/index.js:9
+#, js-format
+msgid "Delete “%s” from protected storage? This cannot be undone."
+msgstr ""
+
+#: build/index.js:9
+msgid "File deleted."
+msgstr ""
+
+#: build/index.js:9
+msgid "Previous"
+msgstr ""
+
+#. translators: 1: current page number, 2: total number of pages
+#: build/index.js:10
+#, js-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: build/index.js:10
+msgid "Next"
+msgstr ""
+
+#: build/index.js:10
+msgid "Change access policy"
+msgstr ""
+
+#: build/index.js:10
+msgid "Update policy"
+msgstr ""
+
+#: build/index.js:10
+msgid "Policy updated."
+msgstr ""
+
+#: build/index.js:10
+msgid "Protect file"
+msgstr ""
+
+#: build/index.js:10
+msgid "File protected."
+msgstr ""
+
+#: build/index.js:10
+msgid "Could not protect that file."
+msgstr ""
+
+#: build/index.js:10
+msgid "Access Policies"
+msgstr ""
+
+#: build/index.js:10
+msgid "Reusable rules for who can download a file and how many times."
+msgstr ""
+
+#: build/index.js:10
+msgid "New policy"
+msgstr ""
+
+#: build/index.js:10
+msgid "No policies yet"
+msgstr ""
+
+#: build/index.js:10
+msgid "Create a policy to control who can download your protected files."
+msgstr ""
+
+#: build/index.js:10
+msgid "Create a policy"
+msgstr ""
+
+#: build/index.js:10
+msgid "Delete this policy? Files using it become public links."
+msgstr ""
+
+#: build/index.js:10
+msgid "Policy deleted."
+msgstr ""
+
+#: build/index.js:10
+msgid "Policy saved."
+msgstr ""
+
+#: build/index.js:10
+msgid "Blocks"
+msgstr ""
+
+#: build/index.js:10
+msgid "RayEtun Media Protection editor blocks and their site-wide defaults. New blocks inherit these; each block can still override them."
+msgstr ""
+
+#: build/index.js:10
+msgid "Pro"
+msgstr ""
+
+#: build/index.js:10
+msgid "Defaults"
+msgstr ""
+
+#: build/index.js:10
+msgid "Integrations"
+msgstr ""
+
+#: build/index.js:10
+msgid "— Select a preset —"
+msgstr ""
+
+#: build/index.js:10
+msgid "Automatically watermark downloads sold through your store."
+msgstr ""
+
+#: build/index.js:10
+msgid "Detected plugins"
+msgstr ""
+
+#: build/index.js:10
+msgid "Active"
+msgstr ""
+
+#: build/index.js:10
+msgid "Not installed"
+msgstr ""
+
+#: build/index.js:10
+msgid "Downloads from this plugin will be watermarked when e-commerce watermarking is on."
+msgstr ""
+
+#: build/index.js:10
+msgid "Install and activate this plugin to watermark its downloads."
+msgstr ""
+
+#: build/index.js:10
+msgid "E-commerce watermark"
+msgstr ""
+
+#: build/index.js:10
+msgid "Stamp a watermark on each buyer’s downloads"
+msgstr ""
+
+#: build/index.js:10
+msgid "Uses tokens like the buyer’s email and order number for traceable delivery."
+msgstr ""
+
+#: build/index.js:10
+msgid "Create a watermark preset first (Watermarks → New preset), then choose it here."
+msgstr ""
+
+#: build/index.js:10
+msgid "Watermark preset to apply"
+msgstr ""
+
+#: build/index.js:10
+msgid "Choose a preset above, or any legacy inline watermark will be used."
+msgstr ""
+
+#: build/index.js:10
+msgid "Analytics"
+msgstr ""
+
+#: build/index.js:10
+msgid "How your protected files are being accessed — served, blocked, and why."
+msgstr ""
+
+#: build/index.js:10
+msgid "Time range"
+msgstr ""
+
+#: build/index.js:10
+msgid "Files accessed"
+msgstr ""
+
+#: build/index.js:10
+msgid "Block rate"
+msgstr ""
+
+#: build/index.js:10
+msgid "Activity over time"
+msgstr ""
+
+#: build/index.js:10
+msgid "Busiest files"
+msgstr ""
+
+#: build/index.js:10
+msgid "Busiest protected files by number of served and blocked requests"
+msgstr ""
+
+#: build/index.js:10
+msgid "No file activity in this range."
+msgstr ""
+
+#: build/index.js:10
+msgid "Why attempts were blocked"
+msgstr ""
+
+#: build/index.js:10
+msgid "Blocked attempts grouped by reason"
+msgstr ""
+
+#: build/index.js:10
+msgid "No blocked attempts in this range — every request was allowed."
+msgstr ""
+
+#. translators: %d: number of days
+#: build/index.js:11
+#, js-format
+msgid "Based on access-log entries from the last %d days. IP and browser details are stored only as salted hashes."
+msgstr ""
+
+#: build/index.js:11
+msgid "Settings"
+msgstr ""
+
+#: build/index.js:11
+msgid "General"
+msgstr ""
+
+#: build/index.js:11
+msgid "Uploads"
+msgstr ""
+
+#: build/index.js:11
+msgid "Access control"
+msgstr ""
+
+#: build/index.js:11
+msgid "Security"
+msgstr ""
+
+#: build/index.js:11
+msgid "Tools"
+msgstr ""
+
+#: build/index.js:11
+msgid "About"
+msgstr ""
+
+#: build/index.js:11
+msgid "Theme, retention, access control, and maintenance."
+msgstr ""
+
+#: build/index.js:11
+msgid "Docs"
+msgstr ""
+
+#: build/index.js:11
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: build/index.js:11
+msgid "Support"
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+msgctxt "block title"
+msgid "Protected Download"
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+msgctxt "block description"
+msgid "A signed, access-controlled download button for a single file. Only authorized visitors get the download link."
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+#: build/blocks/protected-gallery/block.json
+msgctxt "block keyword"
+msgid "download"
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+#: build/blocks/protected-gallery/block.json
+#: build/blocks/protected-library/block.json
+msgctxt "block keyword"
+msgid "protect"
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+msgctxt "block keyword"
+msgid "file"
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+msgctxt "block keyword"
+msgid "gated"
+msgstr ""
+
+#: build/blocks/protected-download/block.json
+msgctxt "block keyword"
+msgid "secure"
+msgstr ""
+
+#: build/blocks/protected-gallery/block.json
+msgctxt "block title"
+msgid "Protected Gallery"
+msgstr ""
+
+#: build/blocks/protected-gallery/block.json
+msgctxt "block description"
+msgid "A watermark-protected image gallery: clean thumbnails, a watermarked lightbox preview, and authorized clean-file downloads."
+msgstr ""
+
+#: build/blocks/protected-gallery/block.json
+msgctxt "block keyword"
+msgid "gallery"
+msgstr ""
+
+#: build/blocks/protected-gallery/block.json
+msgctxt "block keyword"
+msgid "watermark"
+msgstr ""
+
+#: build/blocks/protected-gallery/block.json
+msgctxt "block keyword"
+msgid "photography"
+msgstr ""
+
+#: build/blocks/protected-library/block.json
+msgctxt "block title"
+msgid "Protected File Library"
+msgstr ""
+
+#: build/blocks/protected-library/block.json
+msgctxt "block description"
+msgid "A grid of protected files with signed, access-controlled downloads and optional filtering."
+msgstr ""
+
+#: build/blocks/protected-library/block.json
+msgctxt "block keyword"
+msgid "downloads"
+msgstr ""
+
+#: build/blocks/protected-library/block.json
+msgctxt "block keyword"
+msgid "library"
+msgstr ""
+
+#: build/blocks/protected-library/block.json
+msgctxt "block keyword"
+msgid "files"
+msgstr ""
+
+#: build/blocks/protected-library/block.json
+msgctxt "block keyword"
+msgid "resources"
+msgstr ""

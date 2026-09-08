@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "markguard/protected-download",
+	"version": "1.0.0",
+	"title": "Protected Download",
+	"category": "media",
+	"icon": "download",
+	"description": "A signed, access-controlled download button for a single file. Only authorized visitors get the download link.",
+	"keywords": [ "download", "protect", "file", "gated", "secure" ],
+	"textdomain": "rayetun-media-protection",
+	"supports": {
+		"html": false,
+		"align": [ "wide" ]
+	},
+	"attributes": {
+		"fileId": { "type": "number", "default": 0 },
+		"attachmentId": { "type": "number", "default": 0 },
+		"policyId": { "type": "number", "default": 0 },
+		"label": { "type": "string", "default": "" },
+		"lockedText": { "type": "string", "default": "" },
+		"showInfo": { "type": "boolean", "default": true },
+		"accent": { "type": "string", "default": "#059669" },
+		"template": { "type": "string", "default": "card" },
+		"inited": { "type": "boolean", "default": false },
+		"name": { "type": "string", "default": "" },
+		"size": { "type": "number", "default": 0 },
+		"mime": { "type": "string", "default": "" }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

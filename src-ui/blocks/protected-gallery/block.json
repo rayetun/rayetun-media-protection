@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "markguard/protected-gallery",
+	"version": "1.0.0",
+	"title": "Protected Gallery",
+	"category": "media",
+	"icon": "format-gallery",
+	"description": "A watermark-protected image gallery: clean thumbnails, a watermarked lightbox preview, and authorized clean-file downloads.",
+	"keywords": [ "gallery", "watermark", "protect", "photography", "download" ],
+	"textdomain": "rayetun-media-protection",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"items": { "type": "array", "default": [] },
+		"config": { "type": "object", "default": {} }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

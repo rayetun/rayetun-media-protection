@@ -1,0 +1,32 @@
+{
+	"name": "markguard",
+	"version": "1.0.0",
+	"description": "Watermark images and PDFs, protect downloadable files, and control who can access them.",
+	"author": "Ray Etun",
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://rayetun.com/markguard",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rayetun/markguard.git"
+	},
+	"private": true,
+	"scripts": {
+		"build": "wp-scripts build --webpack-src-dir=src-ui --output-path=build",
+		"start": "wp-scripts start --webpack-src-dir=src-ui --output-path=build",
+		"format": "wp-scripts format src-ui",
+		"lint:css": "wp-scripts lint-style 'src-ui/**/*.css'",
+		"lint:js": "wp-scripts lint-js src-ui",
+		"test": "wp-scripts test-unit-js",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"devDependencies": {
+		"@babel/runtime": "^8.0.0",
+		"@wordpress/api-fetch": "^7.52.0",
+		"@wordpress/components": "^38.0.0",
+		"@wordpress/element": "^8.4.0",
+		"@wordpress/i18n": "^6.25.0",
+		"@wordpress/icons": "^15.3.0",
+		"@wordpress/scripts": "^28.0.0",
+		"rtlcss": "^4.3.0"
+	}
+}

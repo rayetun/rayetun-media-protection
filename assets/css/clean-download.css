@@ -1,0 +1,39 @@
+/**
+ * MarkGuard clean-copy download button. Loaded only on pages that render the
+ * [markguard_clean_download] shortcode. Emerald to match the plugin, with a
+ * neutral "locked" state for visitors who cannot download yet.
+ */
+
+.markguard-clean-download__button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 18px;
+	background: #059669;
+	color: #fff;
+	font-weight: 600;
+	line-height: 1.2;
+	text-decoration: none;
+	border-radius: 8px;
+	transition: background 0.15s ease;
+}
+
+.markguard-clean-download__button:hover,
+.markguard-clean-download__button:focus {
+	background: #047857;
+	color: #fff;
+}
+
+.markguard-clean-download__button:focus-visible {
+	outline: 2px solid #047857;
+	outline-offset: 2px;
+}
+
+.markguard-clean-download--locked {
+	display: inline-block;
+	padding: 10px 16px;
+	background: rgba(100, 116, 139, 0.12);
+	color: #475569;
+	border-radius: 8px;
+	font-size: 0.95em;
+}

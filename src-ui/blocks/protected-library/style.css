@@ -1,0 +1,136 @@
+/**
+ * Protected File Library — front-end (and shared editor) styles. Self-contained
+ * copy of the download-card styles; accent from --mg-accent.
+ */
+.mg-library {
+	--mg-library-cols: 2;
+	--mg-library-gap: 12px;
+	--mg-accent: #059669;
+}
+.mg-library__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 var(--mg-library-gap);
+}
+.mg-library__filter {
+	appearance: none;
+	border: 1px solid rgba(15, 23, 42, 0.15);
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-size: 0.9em;
+	padding: 5px 14px;
+	border-radius: 999px;
+	cursor: pointer;
+}
+.mg-library__filter.is-active {
+	background: var(--mg-accent, #059669);
+	border-color: var(--mg-accent, #059669);
+	color: #fff;
+}
+.mg-library__grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(var(--mg-library-cols), 1fr);
+	gap: var(--mg-library-gap);
+}
+.mg-library__cell {
+	margin: 0;
+}
+
+/* ---- Download card (shared visual with the Protected Download block) ---- */
+.mg-library .mg-download {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 14px 16px;
+	height: 100%;
+	border: 1px solid rgba(15, 23, 42, 0.12);
+	border-radius: 10px;
+	background: rgba(15, 23, 42, 0.02);
+	box-sizing: border-box;
+}
+.mg-library .mg-download__icon {
+	display: flex;
+	flex: 0 0 auto;
+	color: var(--mg-accent, #059669);
+}
+.mg-library .mg-download__meta {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+.mg-library .mg-download__name {
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.mg-library .mg-download__info {
+	font-size: 0.85em;
+	opacity: 0.7;
+}
+.mg-library .mg-download__button {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	padding: 9px 16px;
+	background: var(--mg-accent, #059669);
+	color: #fff;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 8px;
+	border: 1.5px solid var(--mg-accent, #059669);
+}
+.mg-library .mg-download__button:hover,
+.mg-library .mg-download__button:focus {
+	filter: brightness(0.92);
+	color: #fff;
+}
+.mg-library .mg-download__button--login {
+	background: transparent;
+	color: var(--mg-accent, #059669);
+}
+.mg-library .mg-download__button--login:hover,
+.mg-library .mg-download__button--login:focus {
+	background: var(--mg-accent, #059669);
+	color: #fff;
+	filter: none;
+}
+.mg-library .mg-download__locked {
+	flex: 0 0 auto;
+	font-size: 0.85em;
+	opacity: 0.7;
+}
+
+/* ---- Tile template ---- */
+.mg-library--tile .mg-download {
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 10px;
+	padding: 22px 18px;
+}
+.mg-library--tile .mg-download__icon svg {
+	width: 40px;
+	height: 40px;
+}
+.mg-library--tile .mg-download__meta {
+	align-items: center;
+	width: 100%;
+}
+.mg-library--tile .mg-download__button {
+	width: 100%;
+	justify-content: center;
+}
+
+@media (max-width: 600px) {
+	.mg-library__grid {
+		grid-template-columns: 1fr;
+	}
+}

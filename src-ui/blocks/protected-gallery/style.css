@@ -1,0 +1,212 @@
+/**
+ * Protected Gallery — front-end (and shared editor) styles. Uses CSS custom
+ * properties set inline from the block config so one stylesheet covers every
+ * configuration.
+ */
+
+.mg-gallery {
+	--mg-gallery-cols: 3;
+	--mg-gallery-gap: 12px;
+	--mg-gallery-radius: 8px;
+	--mg-gallery-overlay-color: #ffffff;
+	--mg-gallery-overlay-opacity: 0.12;
+	--mg-accent: #059669;
+	position: relative;
+}
+
+/* ---- Filter bar ---- */
+.mg-gallery__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 var(--mg-gallery-gap);
+}
+.mg-gallery__filter {
+	appearance: none;
+	border: 1px solid rgba(15, 23, 42, 0.15);
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-size: 0.9em;
+	padding: 5px 14px;
+	border-radius: 999px;
+	cursor: pointer;
+}
+.mg-gallery__filter.is-active {
+	background: var(--mg-accent, #059669);
+	border-color: var(--mg-accent, #059669);
+	color: #fff;
+}
+
+/* ---- Grid ---- */
+.mg-gallery__grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(var(--mg-gallery-cols), 1fr);
+	gap: var(--mg-gallery-gap);
+}
+.mg-gallery__cell {
+	margin: 0;
+}
+.mg-gallery__item {
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: zoom-in;
+	overflow: hidden;
+	border-radius: var(--mg-gallery-radius);
+	line-height: 0;
+}
+.mg-gallery__thumb {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 1 / 1;
+	-webkit-user-drag: none;
+	user-select: none;
+	transition: transform 0.25s ease;
+}
+.mg-gallery__item:hover .mg-gallery__thumb {
+	transform: scale(1.04);
+}
+
+/* ---- Protective overlay pattern ---- */
+.mg-gallery__overlay {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: var(--mg-gallery-overlay-opacity);
+	color: var(--mg-gallery-overlay-color);
+}
+.mg-gallery[data-overlay-style="grid"] .mg-gallery__overlay {
+	background-image:
+		repeating-linear-gradient(0deg, currentColor 0 1px, transparent 1px 22px),
+		repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 22px);
+}
+.mg-gallery[data-overlay-style="diagonal"] .mg-gallery__overlay {
+	background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 16px);
+}
+.mg-gallery[data-overlay-style="dots"] .mg-gallery__overlay {
+	background-image: radial-gradient(currentColor 1px, transparent 1.6px);
+	background-size: 18px 18px;
+}
+
+/* ---- Lightbox ---- */
+.mg-gallery-lock {
+	overflow: hidden;
+}
+.mg-gallery__lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4vmin;
+}
+.mg-gallery__lightbox[hidden] {
+	display: none;
+}
+.mg-gallery__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(2, 6, 23, 0.85);
+}
+.mg-gallery__dialog {
+	position: relative;
+	max-width: min(1100px, 96vw);
+	max-height: 92vh;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.mg-gallery__preview {
+	display: block;
+	max-width: 100%;
+	max-height: 78vh;
+	margin: 0 auto;
+	object-fit: contain;
+	border-radius: 6px;
+	-webkit-user-drag: none;
+	user-select: none;
+}
+.mg-gallery__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	color: #f8fafc;
+}
+.mg-gallery__title {
+	margin: 0;
+	font-size: 1.05rem;
+	color: #f8fafc;
+}
+.mg-gallery__download {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 18px;
+	background: var(--mg-accent, #059669);
+	color: #fff;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 8px;
+	border: 1.5px solid var(--mg-accent, #059669);
+}
+.mg-gallery__download:hover,
+.mg-gallery__download:focus {
+	filter: brightness(0.92);
+	color: #fff;
+}
+/* Login variant: outlined until hovered. */
+.mg-gallery__download--login {
+	background: transparent;
+	color: var(--mg-accent, #059669);
+}
+.mg-gallery__download--login:hover,
+.mg-gallery__download--login:focus {
+	background: var(--mg-accent, #059669);
+	color: #fff;
+	filter: none;
+}
+.mg-gallery__download[hidden],
+.mg-gallery__locked[hidden] {
+	display: none;
+}
+.mg-gallery__locked {
+	margin: 0;
+	color: #cbd5e1;
+	font-size: 0.95em;
+}
+.mg-gallery__close {
+	position: absolute;
+	top: -14px;
+	right: -6px;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 50%;
+	background: #f8fafc;
+	color: #0f172a;
+	font-size: 26px;
+	line-height: 1;
+	cursor: pointer;
+}
+.mg-gallery__close:focus-visible {
+	outline: 2px solid #059669;
+	outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+	.mg-gallery__grid {
+		grid-template-columns: repeat(min(var(--mg-gallery-cols), 2), 1fr);
+	}
+}

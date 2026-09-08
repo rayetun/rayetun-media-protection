@@ -1,0 +1,1177 @@
+/**
+ * MarkGuard admin app layout. Scopes everything under #markguard-admin-app so
+ * it never bleeds into the rest of wp-admin. Uses the design tokens.
+ */
+
+@import './tokens.css';
+
+/* Reset the default wp-admin white gutter so our app owns the canvas. */
+#wpcontent {
+	padding-left: 0;
+}
+.markguard-wrap {
+	margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Full-height app that scrolls *inside itself* instead of growing the page.
+
+   The WordPress admin menu is left entirely alone — we never style it. The
+   reason it used to scroll away was that our SPA content made the whole
+   wp-admin PAGE taller than the viewport, so the page scrolled and carried the
+   native menu with it. Here we cap our app to the viewport height and let the
+   main column scroll internally, so the page itself never grows and WordPress's
+   menu keeps its own native, untouched behaviour (it simply stays put when the
+   page doesn't scroll; on sites with a very long menu the page scrolls and WP
+   handles it exactly as normal).
+
+   These rules target wp-admin ids, but this stylesheet is enqueued only on the
+   MarkGuard screen, so no other admin page is affected. The admin footer and
+   its reserved padding are the only remaining page-scroll sources on this
+   screen, so we drop them here (footer returns on every other admin page). */
+#wpbody-content {
+	padding-bottom: 0;
+}
+#wpfooter {
+	display: none;
+}
+/* The wp-admin .wrap adds a 10px top margin; combined with the app's
+   `100vh - adminbar` height that pushes the app ~10px past the viewport and
+   the whole page gains a second scrollbar next to the app's own. Zero it so the
+   app fills exactly and only its internal scrollbar shows. */
+.wrap.markguard-wrap {
+	margin: 0;
+	padding: 0;
+}
+
+#markguard-admin-app {
+	background: var( --mg-bg );
+	color: var( --mg-text );
+	/* The browser/page is the single scroll container — the app flows in the
+	   normal document, so there is exactly one scrollbar (not an inner app
+	   scrollbar next to the page one). .mg-app carries the viewport min-height so
+	   short screens still fill the window. overflow-x stays hidden so wide content
+	   never adds a horizontal scrollbar. */
+	overflow-x: hidden;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+	font-size: 14px;
+	box-sizing: border-box;
+
+	/* Tint every @wordpress/components control (toggles, buttons, focus rings)
+	   with the MarkGuard emerald instead of the default WP admin blue. */
+	--wp-admin-theme-color: #059669;
+	--wp-admin-theme-color-darker-10: #047857;
+	--wp-admin-theme-color-darker-20: #036349;
+	--wp-components-color-accent: #059669;
+	--wp-components-color-accent-darker-10: #047857;
+	--wp-components-color-accent-darker-20: #036349;
+}
+
+/* -------------------------------------------------------------------------
+   @wordpress/components form controls on the dark PAGE. Modals portal outside
+   #markguard-admin-app and keep their own light theme, so these overrides
+   (scoped to the app id) only touch page controls. Using our tokens means they
+   follow light and dark automatically.
+   ------------------------------------------------------------------------- */
+#markguard-admin-app .components-base-control__label,
+#markguard-admin-app .components-input-control__label,
+#markguard-admin-app .components-checkbox-control__label,
+#markguard-admin-app .components-toggle-control__label {
+	color: var( --mg-text );
+}
+#markguard-admin-app .components-base-control__help {
+	color: var( --mg-text-muted );
+}
+#markguard-admin-app .components-select-control__input,
+#markguard-admin-app select.components-select-control__input,
+#markguard-admin-app .components-text-control__input,
+#markguard-admin-app .components-textarea-control__input,
+#markguard-admin-app .components-input-control__input,
+#markguard-admin-app .components-input-control__container {
+	background: var( --mg-surface );
+	color: var( --mg-text );
+	border-color: var( --mg-border );
+}
+#markguard-admin-app .components-input-control__backdrop {
+	border-color: var( --mg-border ) !important;
+}
+#markguard-admin-app *,
+#markguard-admin-app *::before,
+#markguard-admin-app *::after {
+	box-sizing: border-box;
+}
+
+/* Headings inherit the theme text colour — wp-admin sets its own dark heading
+   colour that would otherwise be invisible on the dark surface. */
+#markguard-admin-app h1,
+#markguard-admin-app h2,
+#markguard-admin-app h3,
+#markguard-admin-app h4 {
+	color: var( --mg-text );
+}
+
+/* ---- App shell ---- */
+.mg-app {
+	display: grid;
+	grid-template-columns: var( --mg-sidebar-w ) 1fr;
+	/* At least fill the viewport (so the sidebar background reaches the bottom on
+	   short pages), but grow with content and scroll as one unit with the page. */
+	min-height: calc( 100vh - var( --mg-adminbar-h, 32px ) );
+}
+.mg-app.is-collapsed {
+	grid-template-columns: var( --mg-sidebar-w-collapsed ) 1fr;
+}
+
+/* ---- Sidebar ---- */
+.mg-sidebar {
+	background: var( --mg-surface );
+	border-right: 1px solid var( --mg-border );
+	display: flex;
+	flex-direction: column;
+	/* Not sticky — the sidebar scrolls together with the content. It stretches
+	   to the grid's height so its background always reaches the bottom. */
+}
+.mg-brand {
+	display: flex;
+	align-items: center;
+	gap: var( --mg-space-3 );
+	padding: var( --mg-space-5 ) var( --mg-space-4 );
+	border-bottom: 1px solid var( --mg-border );
+}
+.mg-brand__logo {
+	width: 28px;
+	height: 28px;
+	flex: 0 0 auto;
+	color: var( --mg-primary );
+}
+.mg-brand__name {
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+.mg-brand__version {
+	font-size: 11px;
+	font-weight: 600;
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
+	border-radius: var( --mg-radius-chip );
+	padding: 2px 6px;
+}
+.mg-nav {
+	display: flex;
+	flex-direction: column;
+	padding: var( --mg-space-3 ) var( --mg-space-2 );
+	gap: 2px;
+}
+.mg-nav__item {
+	display: flex;
+	align-items: center;
+	gap: var( --mg-space-3 );
+	padding: 10px var( --mg-space-3 );
+	border-radius: var( --mg-radius-input );
+	color: var( --mg-text-muted );
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	background: none;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+}
+.mg-nav__item:hover {
+	background: var( --mg-surface-2 );
+	color: var( --mg-text );
+}
+.mg-nav__item.is-active {
+	background: var( --mg-primary-soft );
+	color: var( --mg-primary );
+	font-weight: 600;
+}
+.mg-nav__item:focus-visible {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 2px;
+}
+.mg-nav__icon {
+	width: 20px;
+	height: 20px;
+	flex: 0 0 auto;
+}
+.mg-sidebar__footer {
+	margin-top: auto;
+	padding: var( --mg-space-3 );
+	display: flex;
+	gap: var( --mg-space-2 );
+	border-top: 1px solid var( --mg-border );
+}
+.is-collapsed .mg-brand__name,
+.is-collapsed .mg-brand__version,
+.is-collapsed .mg-nav__label,
+.is-collapsed .mg-sidebar__footer {
+	display: none;
+}
+
+/* ---- Main column ---- */
+.mg-main {
+	min-width: 0;
+	padding: var( --mg-space-6 );
+}
+.mg-page-header {
+	margin-bottom: var( --mg-space-5 );
+}
+.mg-page-header__title {
+	font-size: 27px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 4px;
+}
+.mg-page-header__subtitle {
+	color: var( --mg-text-muted );
+	font-size: 15px;
+	margin: 0;
+}
+
+/* ---- Cards ---- */
+.mg-card {
+	background: var( --mg-surface );
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-card );
+	box-shadow: var( --mg-shadow-card );
+	padding: var( --mg-space-5 );
+}
+.mg-grid {
+	display: grid;
+	gap: var( --mg-space-4 );
+}
+.mg-grid--stats {
+	grid-template-columns: repeat( auto-fit, minmax( 200px, 1fr ) );
+}
+
+/* ---- Section label (e.g. "MODULES") ---- */
+.mg-section-title {
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var( --mg-text-muted );
+	margin: var( --mg-space-6 ) 0 var( --mg-space-3 );
+}
+
+/* ---- Feature toggle cards ---- */
+.mg-grid--features {
+	grid-template-columns: repeat( auto-fit, minmax( 300px, 1fr ) );
+}
+.mg-feature-card {
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-2 );
+}
+.mg-feature-card__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var( --mg-space-3 );
+}
+.mg-feature-card__title {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 0;
+}
+.mg-feature-card__desc {
+	color: var( --mg-text-muted );
+	font-size: 14px;
+	line-height: 1.55;
+	margin: 0;
+}
+.mg-feature-card__note {
+	font-size: 12px;
+	color: var( --mg-text-muted );
+	font-style: italic;
+}
+
+/* ---- Quick actions ---- */
+.mg-grid--actions {
+	grid-template-columns: repeat( auto-fit, minmax( 220px, 1fr ) );
+}
+.mg-quick-action {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	text-align: left;
+	padding: var( --mg-space-4 );
+	background: var( --mg-surface );
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-card );
+	box-shadow: var( --mg-shadow-card );
+	cursor: pointer;
+	color: var( --mg-text );
+}
+.mg-quick-action:hover {
+	border-color: var( --mg-primary );
+}
+.mg-quick-action:focus-visible {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 2px;
+}
+.mg-quick-action__title {
+	font-weight: 600;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	gap: var( --mg-space-2 );
+}
+.mg-quick-action__desc {
+	color: var( --mg-text-muted );
+	font-size: 12px;
+}
+.mg-quick-action__icon {
+	color: var( --mg-primary );
+}
+
+/* ---- Onboarding ---- */
+.mg-onboarding {
+	border-left: 3px solid var( --mg-primary );
+}
+.mg-onboarding__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: var( --mg-space-3 );
+}
+.mg-steps {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-2 );
+}
+.mg-step {
+	display: flex;
+	align-items: center;
+	gap: var( --mg-space-3 );
+	font-size: 14px;
+}
+.mg-step__check {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid var( --mg-border );
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var( --mg-primary-fg );
+	font-size: 12px;
+}
+.mg-step.is-done .mg-step__check {
+	background: var( --mg-primary );
+	border-color: var( --mg-primary );
+}
+.mg-step.is-done .mg-step__label {
+	color: var( --mg-text-muted );
+	text-decoration: line-through;
+}
+
+/* ---- Preset cards ---- */
+.mg-grid--presets {
+	grid-template-columns: repeat( auto-fill, minmax( 280px, 1fr ) );
+}
+.mg-preset-card {
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-2 );
+}
+.mg-preset-card__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var( --mg-space-2 );
+}
+.mg-preset-card__name {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 0;
+}
+.mg-preset-card__summary {
+	color: var( --mg-text );
+	font-size: 14px;
+	margin: 0;
+	word-break: break-word;
+}
+.mg-preset-card__meta {
+	display: flex;
+	gap: 6px;
+	color: var( --mg-text-muted );
+	font-size: 13px;
+	text-transform: capitalize;
+}
+.mg-preset-card__actions {
+	display: flex;
+	gap: var( --mg-space-2 );
+	margin-top: var( --mg-space-2 );
+	flex-wrap: wrap;
+}
+.mg-badge {
+	font-size: 11px;
+	font-weight: 600;
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
+	border-radius: var( --mg-radius-chip );
+	padding: 2px 8px;
+	white-space: nowrap;
+}
+
+/* ---- Editor modal (two-pane) ---- */
+.mg-editor-modal.components-modal__frame {
+	width: min( 940px, 92vw );
+	max-width: 940px;
+	max-height: 90vh;
+
+	/* The modal renders in a portal outside #markguard-admin-app, so re-declare
+	   a consistent light surface + emerald accent here. WordPress modals are
+	   light by convention; we keep that but tint accents to the MarkGuard brand
+	   so controls inside match the rest of the app. */
+	--mg-surface: #ffffff;
+	--mg-surface-2: #f1f5f9;
+	--mg-border: #e2e8f0;
+	--mg-text: #0f172a;
+	--mg-text-muted: #64748b;
+	--wp-admin-theme-color: #059669;
+	--wp-admin-theme-color-darker-10: #047857;
+	--wp-admin-theme-color-darker-20: #036349;
+	--wp-components-color-accent: #059669;
+	--wp-components-color-accent-darker-10: #047857;
+	--wp-components-color-accent-darker-20: #036349;
+}
+.mg-editor {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var( --mg-space-5 );
+	align-items: start;
+}
+.mg-editor__controls {
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-4 );
+}
+.mg-editor__preview {
+	position: sticky;
+	top: 0;
+}
+.mg-editor__footer {
+	position: sticky;
+	bottom: 0;
+	background: var( --mg-surface );
+	display: flex;
+	justify-content: flex-end;
+	gap: var( --mg-space-3 );
+	margin-top: var( --mg-space-5 );
+	padding: var( --mg-space-4 ) 0 var( --mg-space-1 );
+	border-top: 1px solid var( --mg-border );
+	z-index: 1;
+}
+@media ( max-width: 782px ) {
+	.mg-editor {
+		grid-template-columns: 1fr;
+	}
+}
+
+.mg-field {
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-2 );
+}
+.mg-field__label {
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var( --mg-text-muted );
+}
+.mg-textarea {
+	width: 100%;
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	background: var( --mg-surface );
+	color: var( --mg-text );
+	padding: 8px 10px;
+	font: inherit;
+	resize: vertical;
+}
+.mg-textarea:focus {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 0;
+	border-color: var( --mg-primary );
+}
+.mg-color-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.mg-color-input {
+	width: 44px;
+	height: 32px;
+	padding: 0;
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	background: none;
+	cursor: pointer;
+}
+.mg-overlay-thumb {
+	max-width: 120px;
+	max-height: 80px;
+	border-radius: var( --mg-radius-input );
+	border: 1px solid var( --mg-border );
+}
+
+/* ---- Token chips ---- */
+.mg-tokens {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+}
+.mg-tokens__label {
+	font-size: 12px;
+	color: var( --mg-text-muted );
+}
+.mg-token-chip {
+	font-size: 12px;
+	font-weight: 500;
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
+	border: 1px solid transparent;
+	border-radius: var( --mg-radius-chip );
+	padding: 3px 8px;
+	cursor: pointer;
+}
+.mg-token-chip:hover {
+	border-color: var( --mg-primary );
+}
+.mg-token-chip:focus-visible {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 1px;
+}
+
+/* ---- Position grid ---- */
+.mg-position-grid {
+	display: grid;
+	grid-template-columns: repeat( 3, 1fr );
+	gap: 4px;
+	width: 120px;
+	aspect-ratio: 3 / 2;
+}
+.mg-position-cell {
+	border: 1px solid var( --mg-border );
+	border-radius: 4px;
+	background: var( --mg-surface-2 );
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+.mg-position-cell:hover {
+	border-color: var( --mg-primary );
+}
+.mg-position-cell.is-active {
+	background: var( --mg-primary-soft );
+	border-color: var( --mg-primary );
+}
+.mg-position-cell:focus-visible {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 1px;
+}
+.mg-position-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var( --mg-text-muted );
+}
+.mg-position-cell.is-active .mg-position-dot {
+	background: var( --mg-primary );
+}
+
+/* ---- Live preview ---- */
+.mg-preview {
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-3 );
+}
+.mg-preview__stage {
+	position: relative;
+	border-radius: var( --mg-radius-card );
+	overflow: hidden;
+	border: 1px solid var( --mg-border );
+	max-width: 100%;
+}
+.mg-preview__canvas {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	background: linear-gradient( 135deg, #5a6e8c 0%, #a0b0c8 100% );
+	background-image:
+		linear-gradient( 135deg, #5a6e8c 0%, #a0b0c8 100% ),
+		repeating-linear-gradient( 0deg, rgba( 255, 255, 255, 0.08 ) 0 1px, transparent 1px 50px ),
+		repeating-linear-gradient( 90deg, rgba( 255, 255, 255, 0.08 ) 0 1px, transparent 1px 50px );
+	overflow: hidden;
+}
+.mg-preview__text {
+	font-weight: 700;
+	white-space: nowrap;
+	text-shadow: 0 1px 2px rgba( 0, 0, 0, 0.35 );
+	max-width: 95%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mg-preview__placeholder {
+	color: #fff;
+	font-size: 13px;
+	background: rgba( 0, 0, 0, 0.3 );
+	padding: 6px 12px;
+	border-radius: 6px;
+}
+.mg-preview__real {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.mg-preview__actions {
+	display: flex;
+	align-items: center;
+	gap: var( --mg-space-3 );
+	flex-wrap: wrap;
+}
+.mg-preview__badge {
+	font-size: 11px;
+	font-weight: 600;
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
+	border-radius: var( --mg-radius-chip );
+	padding: 3px 8px;
+}
+.mg-preview__err {
+	font-size: 12px;
+	color: var( --mg-danger );
+}
+.mg-preview__note {
+	font-size: 12px;
+	color: var( --mg-text-muted );
+	margin: 0;
+}
+
+/* ---- Narrow modal + shared form ---- */
+.mg-editor-modal--narrow.components-modal__frame {
+	width: min( 640px, 92vw );
+	max-width: 640px;
+}
+
+/* ---- Dark-surface search input ---- */
+/* Scoped under the app id so wp-admin's default input[type=search] styles
+   (which force a white background) do not win the cascade. */
+#markguard-admin-app input.mg-search {
+	width: 100%;
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	background: var( --mg-surface );
+	color: var( --mg-text );
+	padding: 9px 12px;
+	font: inherit;
+	box-shadow: none;
+}
+#markguard-admin-app input.mg-search::placeholder {
+	color: var( --mg-text-muted );
+}
+#markguard-admin-app input.mg-search:focus {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 0;
+	border-color: var( --mg-primary );
+	box-shadow: none;
+}
+
+/* ---- Cohesive outlined action buttons on cards + table rows ---- */
+.mg-preset-card__actions .components-button,
+.mg-row-actions .components-button {
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	background: transparent;
+	color: var( --mg-text );
+	font-weight: 500;
+	height: 30px;
+	padding: 0 12px;
+}
+.mg-preset-card__actions .components-button:hover:not( :disabled ),
+.mg-row-actions .components-button:hover:not( :disabled ) {
+	border-color: var( --mg-primary );
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
+}
+.mg-preset-card__actions .components-button.is-destructive,
+.mg-row-actions .components-button.is-destructive {
+	color: #f87171;
+}
+.mg-preset-card__actions .components-button.is-destructive:hover:not( :disabled ),
+.mg-row-actions .components-button.is-destructive:hover:not( :disabled ) {
+	border-color: var( --mg-danger );
+	background: var( --mg-danger );
+	color: #ffffff;
+}
+.mg-form {
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-4 );
+}
+.mg-field__hint {
+	font-size: 12px;
+	color: var( --mg-text-muted );
+	margin: 0;
+}
+.mg-roles {
+	display: grid;
+	grid-template-columns: repeat( auto-fit, minmax( 140px, 1fr ) );
+	gap: 4px 16px;
+}
+.mg-summary-box {
+	background: var( --mg-primary-soft );
+	border-radius: var( --mg-radius-input );
+	padding: var( --mg-space-3 ) var( --mg-space-4 );
+}
+.mg-summary-box__text {
+	margin: 4px 0 0;
+	font-size: 14px;
+	color: var( --mg-text );
+}
+.mg-badge--muted {
+	color: var( --mg-text-muted );
+	background: var( --mg-surface-2 );
+}
+
+/* ---- Link box ---- */
+.mg-linkbox {
+	display: flex;
+	gap: var( --mg-space-2 );
+}
+.mg-linkbox__input {
+	flex: 1;
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	padding: 6px 10px;
+	font: inherit;
+	font-size: 12px;
+	background: var( --mg-surface-2 );
+	color: var( --mg-text );
+}
+
+/* ---- Table ---- */
+.mg-table-wrap {
+	overflow-x: auto;
+	padding: 0;
+}
+.mg-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+.mg-table th,
+.mg-table td {
+	text-align: left;
+	padding: 10px 12px;
+	border-bottom: 1px solid var( --mg-border );
+	white-space: nowrap;
+	vertical-align: middle;
+}
+/* Let the filename column absorb slack and truncate, so the table fits the
+   card on normal widths (the wrapper still scrolls on very narrow screens). */
+.mg-table th:first-child,
+.mg-table td:first-child {
+	width: 100%;
+	white-space: normal;
+}
+.mg-table th {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var( --mg-text-muted );
+	background: var( --mg-surface-2 );
+}
+.mg-table tbody tr:hover {
+	background: var( --mg-surface-2 );
+}
+.mg-table__name {
+	font-weight: 600;
+	max-width: 260px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mg-table .mg-num {
+	text-align: right;
+}
+.mg-danger-text {
+	color: var( --mg-danger );
+	font-weight: 600;
+}
+/* Keep the actions column from wrapping and hold the button row centered. */
+.mg-actions-cell {
+	white-space: nowrap;
+}
+.mg-row-actions {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+.mg-pager {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var( --mg-space-3 );
+	padding: var( --mg-space-3 ) var( --mg-space-4 );
+	font-size: 13px;
+	color: var( --mg-text-muted );
+}
+.mg-policy-summary {
+	color: var( --mg-text-muted );
+}
+
+/* ---- Settings tabs ---- */
+.mg-tabs .components-tab-panel__tabs {
+	border-bottom: 1px solid var( --mg-border );
+	margin-bottom: var( --mg-space-5 );
+	gap: 4px;
+}
+.mg-tabs .components-tab-panel__tabs-item {
+	color: var( --mg-text-muted );
+}
+.mg-tabs .components-tab-panel__tabs-item.is-active {
+	color: var( --mg-primary );
+}
+.mg-tab-body {
+	max-width: 640px;
+}
+.mg-divider {
+	border: 0;
+	border-top: 1px solid var( --mg-border );
+	margin: var( --mg-space-5 ) 0;
+}
+.mg-tab-body code {
+	background: var( --mg-surface-2 );
+	color: var( --mg-text );
+	padding: 2px 6px;
+	border-radius: var( --mg-radius-chip );
+	font-size: 13px;
+}
+.mg-list {
+	margin: var( --mg-space-2 ) 0;
+	padding-left: 22px;
+	color: var( --mg-text );
+	font-size: 14px;
+	line-height: 1.7;
+	list-style: disc outside;
+}
+.mg-list li {
+	list-style: disc outside;
+	margin-bottom: 4px;
+}
+.mg-caps-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var( --mg-space-6 );
+}
+@media ( max-width: 600px ) {
+	.mg-caps-grid {
+		grid-template-columns: 1fr;
+	}
+}
+/* Give the checklist column a legible header gap and space each role row. */
+.mg-caps-grid .mg-field__label {
+	display: block;
+	margin-bottom: var( --mg-space-3 );
+}
+.mg-caps-grid .components-checkbox-control {
+	margin-bottom: 10px;
+}
+/* The About panel's uninstall label sits above its bullet list. */
+.mg-tab-body > .mg-field__label {
+	display: block;
+	margin-top: var( --mg-space-4 );
+	margin-bottom: var( --mg-space-2 );
+}
+
+/* ---- Placeholder (8.0 only) ---- */
+.mg-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: var( --mg-space-3 );
+	padding: var( --mg-space-6 );
+	color: var( --mg-text-muted );
+}
+.mg-placeholder__badge {
+	font-size: 12px;
+	font-weight: 600;
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
+	border-radius: var( --mg-radius-chip );
+	padding: 4px 10px;
+}
+
+/* ---- Blocks hub ---- */
+.mg-block-card {
+	margin-bottom: var( --mg-space-4 );
+}
+.mg-block-card__head {
+	display: flex;
+	align-items: flex-start;
+	gap: var( --mg-space-4 );
+}
+.mg-block-card__icon.dashicons {
+	font-size: 28px;
+	width: 28px;
+	height: 28px;
+	color: var( --mg-primary );
+	flex: 0 0 auto;
+}
+.mg-block-card__text {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.mg-block-card__title {
+	display: flex;
+	align-items: center;
+	gap: var( --mg-space-3 );
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0 0 4px;
+}
+.mg-block-card__desc {
+	color: var( --mg-text-muted );
+	font-size: 14px;
+	margin: 0;
+}
+.mg-badge--pro {
+	background: var( --mg-primary );
+	color: var( --mg-primary-fg );
+}
+.mg-block-card__body {
+	margin-top: var( --mg-space-5 );
+	padding-top: var( --mg-space-5 );
+	border-top: 1px solid var( --mg-border );
+	max-width: 560px;
+}
+
+/* ---- Analytics: range segmented control ---- */
+.mg-range {
+	display: inline-flex;
+	background: var( --mg-surface-2 );
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	padding: 2px;
+	gap: 2px;
+}
+.mg-range__btn {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	color: var( --mg-text-muted );
+	font: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 5px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background 0.12s ease, color 0.12s ease;
+}
+.mg-range__btn:hover {
+	color: var( --mg-text );
+}
+.mg-range__btn.is-active {
+	background: var( --mg-primary );
+	color: var( --mg-primary-fg );
+}
+.mg-range__btn:focus-visible {
+	outline: 2px solid var( --mg-primary );
+	outline-offset: 1px;
+}
+
+/* ---- Analytics: charts ---- */
+.mg-grid--charts {
+	grid-template-columns: 1fr 1fr;
+	align-items: start;
+	margin-top: 0;
+}
+.mg-analytics__note {
+	color: var( --mg-text-muted );
+	font-size: 13px;
+	margin: var( --mg-space-5 ) 0 0;
+}
+/* Fade the panels slightly while a new range is loading, without layout shift. */
+.mg-fadeable {
+	transition: opacity 0.15s ease;
+}
+.mg-fadeable.is-loading {
+	opacity: 0.55;
+}
+
+.mg-chart {
+	margin: 0;
+}
+.mg-chart__legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var( --mg-space-4 );
+	margin: 0 0 var( --mg-space-4 );
+	padding: 0;
+}
+.mg-chart__legend--tight {
+	margin-bottom: var( --mg-space-3 );
+}
+.mg-legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	color: var( --mg-text-muted );
+}
+.mg-legend-line {
+	display: block;
+}
+.mg-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	flex: 0 0 auto;
+}
+.mg-chart__plot {
+	position: relative;
+}
+.mg-chart__svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: visible;
+}
+.mg-chart__axis {
+	fill: var( --mg-text-muted );
+	font-size: 11px;
+}
+.mg-chart__tip {
+	position: absolute;
+	top: 4px;
+	pointer-events: none;
+	background: var( --mg-surface );
+	border: 1px solid var( --mg-border );
+	border-radius: var( --mg-radius-input );
+	box-shadow: var( --mg-shadow-pop );
+	padding: 8px 10px;
+	font-size: 12px;
+	min-width: 120px;
+	z-index: 5;
+}
+.mg-chart__tip-date {
+	font-weight: 700;
+	color: var( --mg-text );
+	margin-bottom: 4px;
+}
+.mg-chart__tip-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var( --mg-text-muted );
+}
+.mg-chart__tip-row strong {
+	margin-left: auto;
+	color: var( --mg-text );
+}
+.mg-chart__data {
+	margin-top: var( --mg-space-4 );
+}
+.mg-chart__data > summary {
+	cursor: pointer;
+	font-size: 13px;
+	color: var( --mg-primary );
+	user-select: none;
+}
+.mg-chart__data[open] > summary {
+	margin-bottom: var( --mg-space-3 );
+}
+
+/* Horizontal bars (busiest files, denial reasons) */
+.mg-bars {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var( --mg-space-4 );
+}
+.mg-bars__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: var( --mg-space-3 );
+	margin-bottom: 6px;
+}
+.mg-bars__label {
+	font-size: 13px;
+	color: var( --mg-text );
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+}
+.mg-bars__value {
+	font-size: 13px;
+	font-weight: 700;
+	color: var( --mg-text );
+	flex: 0 0 auto;
+}
+.mg-bars__track {
+	display: flex;
+	gap: 2px;
+	height: 12px;
+	background: var( --mg-surface-2 );
+	border-radius: 6px;
+	overflow: hidden;
+}
+.mg-bars__seg {
+	height: 100%;
+	border-radius: 4px;
+	min-width: 3px;
+	transition: filter 0.12s ease;
+}
+.mg-bars__seg:hover {
+	filter: brightness( 1.08 );
+}
+
+/* ---- Responsive ---- */
+/* WordPress's admin bar is taller (46px) below 782px; keep the .mg-app
+   viewport min-height correct so short screens still fill the window. */
+@media screen and ( max-width: 782px ) {
+	#markguard-admin-app {
+		--mg-adminbar-h: 46px;
+	}
+}
+@media ( max-width: 900px ) {
+	.mg-app {
+		grid-template-columns: var( --mg-sidebar-w-collapsed ) 1fr;
+	}
+	.mg-brand__name,
+	.mg-brand__version,
+	.mg-nav__label,
+	.mg-sidebar__footer {
+		display: none;
+	}
+	.mg-grid--charts {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media ( prefers-reduced-motion: no-preference ) {
+	.mg-nav__item {
+		transition: background 0.12s ease, color 0.12s ease;
+	}
+}

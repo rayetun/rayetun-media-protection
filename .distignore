@@ -1,0 +1,71 @@
+# Files and directories excluded from the WordPress.org release ZIP.
+# Consumed by 10up/action-wordpress-plugin-deploy and by bin/deploy-local.sh.
+
+# Dev tooling configuration
+.wp-env.json
+.wp-env.override.json
+.editorconfig
+.eslintrc
+.eslintignore
+.stylelintrc
+.stylelintignore
+.prettierrc
+.prettierignore
+phpcs.xml
+phpcs.xml.dist
+phpstan.neon
+phpstan.neon.dist
+psalm.xml
+psalm.xml.dist
+
+# Dev manifests. composer.json MUST ship alongside vendor/ (Plugin Check
+# flags a vendor/ directory with no composer.json). composer.lock and the
+# npm manifests are dev-only and stay out of the release.
+composer.lock
+package.json
+package-lock.json
+yarn.lock
+
+# Build sources & tooling — only compiled build/ output ships
+src-ui
+webpack.config.js
+scripts
+
+# Node / Composer cache directories
+node_modules
+
+# Vendor — MUST ship in the release: TCPDF + FPDI are runtime deps for PDF
+# watermarking. Package with production deps only:
+#   composer install --no-dev --optimize-autoloader  ->  build ZIP  ->  composer install
+# (the final step restores dev tools for continued development). Do NOT exclude
+# vendor/ here, or PDF watermarking fatals on the installed site.
+
+# Tests
+tests
+phpunit.xml
+phpunit.xml.dist
+.phpunit.result.cache
+
+# Version control & CI
+.git
+.github
+.gitignore
+.gitattributes
+
+# WordPress.org assets (icon/banner) — deployed to SVN /assets/, not the plugin
+.wordpress-org
+
+# OS / editor
+.idea
+.vscode
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Docs / repo housekeeping (belong in the GitHub repo, not the plugin ZIP)
+README.md
+CONTRIBUTING.md
+CHANGELOG.md
+ROADMAP.md
+SUBMISSION-NOTE.md

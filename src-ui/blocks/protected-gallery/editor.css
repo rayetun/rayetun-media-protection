@@ -1,0 +1,64 @@
+/**
+ * Protected Gallery — editor-only styles (placeholder + preview chrome).
+ */
+
+.mg-gallery-editor__placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 40px 20px;
+	text-align: center;
+	border: 1px dashed rgba(15, 23, 42, 0.2);
+	border-radius: 8px;
+	background: rgba(5, 150, 105, 0.04);
+}
+
+.mg-gallery-editor__loading {
+	padding: 30px;
+	text-align: center;
+}
+
+.mg-gallery-editor__edit {
+	margin-top: 12px;
+}
+
+.mg-gallery-editor__hint {
+	margin: 4px 0 12px;
+	font-size: 12px;
+	color: rgba(15, 23, 42, 0.6);
+}
+
+.mg-gallery-editor__tagrow {
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+.mg-gallery-editor__tagrow:last-child {
+	border-bottom: 0;
+}
+.mg-gallery-editor__taghead {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 6px;
+}
+.mg-gallery-editor__tagthumb {
+	width: 32px;
+	height: 32px;
+	object-fit: cover;
+	border-radius: 4px;
+	flex: 0 0 auto;
+}
+.mg-gallery-editor__tagtitle {
+	font-size: 13px;
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* The editor preview isn't interactive — show the item as a plain box. */
+.mg-gallery-editor .mg-gallery__item {
+	cursor: default;
+}

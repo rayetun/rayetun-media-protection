@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "markguard/protected-library",
+	"version": "1.0.0",
+	"title": "Protected File Library",
+	"category": "media",
+	"icon": "portfolio",
+	"description": "A grid of protected files with signed, access-controlled downloads and optional filtering.",
+	"keywords": [ "downloads", "library", "protect", "files", "resources" ],
+	"textdomain": "rayetun-media-protection",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"items": { "type": "array", "default": [] },
+		"config": { "type": "object", "default": {} },
+		"inited": { "type": "boolean", "default": false }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}
