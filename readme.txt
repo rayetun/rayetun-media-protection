@@ -200,7 +200,7 @@ Post in the [WordPress.org support forum](https://wordpress.org/support/plugin/r
 4. Protected files list — every managed file, its rule, its serve count, and last access time.
 5. Access rule builder — combine role, expiration, hotlink, and IP rules in a single rule set.
 6. Analytics — per-file download and block activity, with hashed client fingerprints.
-7. WooCommerce integration — per-product watermark and access rules on the product edit screen.
+7. Integrations — detected store plugins (WooCommerce, Easy Digital Downloads, Download Monitor) and the per-buyer watermark preset applied to their downloads.
 8. Settings — auto-protect uploads, deterrent layer, log retention, and theme controls.
 9. Blocks — Protected Gallery, Protected Download, and Protected File Library in the editor, with per-block defaults.
 

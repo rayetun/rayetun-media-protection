@@ -25,6 +25,13 @@ function applyTheme( theme ) {
 	} else {
 		root.removeAttribute( 'data-mg-theme' );
 	}
+	// Persist per-browser so the choice survives a reload immediately (the
+	// Save button also syncs it to the server for other browsers/devices).
+	try {
+		window.localStorage.setItem( 'mg-theme', theme );
+	} catch ( e ) {
+		/* localStorage unavailable — the server save still persists it. */
+	}
 }
 
 export default function Settings() {

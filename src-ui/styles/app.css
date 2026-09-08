@@ -246,6 +246,11 @@
 .mg-grid--stats {
 	grid-template-columns: repeat( auto-fit, minmax( 200px, 1fr ) );
 }
+/* A card shown directly beneath the stats row (e.g. the Analytics empty state)
+   needs separation from the grid above it. */
+.mg-grid--stats + .mg-card {
+	margin-top: var( --mg-space-5 );
+}
 
 /* ---- Section label (e.g. "MODULES") ---- */
 .mg-section-title {
@@ -843,6 +848,12 @@
 }
 .mg-tabs .components-tab-panel__tabs-item {
 	color: var( --mg-text-muted );
+}
+/* WP's default tab hover darkens the label (invisible on the dark theme); keep
+   it themed in both modes. */
+.mg-tabs .components-tab-panel__tabs-item:hover {
+	color: var( --mg-primary );
+	background: var( --mg-primary-soft );
 }
 .mg-tabs .components-tab-panel__tabs-item.is-active {
 	color: var( --mg-primary );

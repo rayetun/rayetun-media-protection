@@ -220,11 +220,11 @@ final class SettingsController extends AbstractController {
 
 	private function current_theme(): string {
 		$theme = (string) get_user_meta( get_current_user_id(), 'markguard_theme', true );
-		return in_array( $theme, [ 'light', 'dark', 'auto' ], true ) ? $theme : 'auto';
+		return in_array( $theme, [ 'light', 'dark', 'auto' ], true ) ? $theme : 'light';
 	}
 
 	private function save_theme( string $theme ): void {
-		$theme = in_array( $theme, [ 'light', 'dark', 'auto' ], true ) ? $theme : 'auto';
+		$theme = in_array( $theme, [ 'light', 'dark', 'auto' ], true ) ? $theme : 'light';
 		update_user_meta( get_current_user_id(), 'markguard_theme', $theme );
 	}
 
