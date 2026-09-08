@@ -30,8 +30,10 @@ jobs:
         run: composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Build front-end and admin assets
+        # npm install (not ci) so a drifted package-lock.json can't fail the
+        # deploy; the build output is deterministic from package.json + webpack.
         run: |
-          npm ci
+          npm install --no-audit --no-fund
           npm run build
 
       - name: Deploy to WordPress.org
